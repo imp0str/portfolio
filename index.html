@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>imp0str.dev</title>
+  
+  <!-- Tailwind & DaisyUI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet"/>
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- Anime.js for smooth JS‑driven animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="./css/styles.css"/>
+</head>
+<body class="min-h-screen flex flex-col bg-base-100 text-base-content">
+
+  <!-- NAVBAR -->
+  <nav class="flex justify-between items-center p-4 shadow-lg bg-base-200 z-10">
+    <button id="logo-btn" class="tab-button text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent p-0 m-0 flex items-center" data-tab="home" aria-label="Go to Home">imp0str.dev</button>
+    <div class="flex items-center gap-4">
+      <button class="tab-button transform btn btn-ghost bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-transform duration-200 ease-in-out hover:scale-125" data-tab="home">Home</button>
+      <button class="tab-button transform btn btn-ghost bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-transform duration-200 ease-in-out hover:scale-125" data-tab="about">About</button>
+      <button class="tab-button transform btn btn-ghost bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-transform duration-200 ease-in-out hover:scale-125" data-tab="projects">Projects</button>
+      <button class="tab-button transform btn btn-ghost bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-transform duration-200 ease-in-out hover:scale-125" data-tab="contact">Contact</button>
+      <select id="themeSwitcher" class="select select-bordered select-sm">
+
+      </select>
+    </div>
+  </nav>
+
+<!-- MAIN CONTENT -->
+  <main class="flex-grow flex items-center justify-center p-8 overflow-hidden">
+
+<div
+  id="home"
+  class="tab-content hidden   <!-- ← add these two classes back -->
+         relative w-full max-w-5xl text-center
+         p-4 flex flex-col items-center justify-center
+         bg-transparent min-h-[60vh] overflow-visible"
+>
+  <!-- 🔮 Primary orb (soft circle, not clipped) -->
+  <div class="absolute top-1/4 left-[10%] w-96 h-96 bg-primary/30 rounded-full blur-3xl -z-10"></div>
+
+  <!-- 🔮 Secondary orb (soft circle, not clipped) -->
+  <div class="absolute bottom-1/4 right-[10%] w-[24rem] h-[24rem] bg-secondary/30 rounded-full blur-3xl -z-10"></div>
+
+  <!-- Hero text -->
+  <h1 class="text-4xl md:text-5xl font-bold mb-6">
+    Hello, I am a
+    <span id="typed" class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"></span>
+  </h1>
+  <p class="text-lg max-w-xl mx-auto">
+    Hey there! Welcome to my portfolio. Feel free to poke around, check out my projects, and say hi in the Contact tab.
+  </p>
+</div>
+
+      <!-- ABOUT -->
+      <div id="about" class="tab-content hidden w-full max-w-5xl flex items-center justify-center h-[60vh]">
+        <div
+          class="w-full h-full p-1 rounded-lg
+                 bg-gradient-to-r from-primary to-accent
+                 hover:from-accent hover:to-primary
+                 transition-colors duration-500 ease-in-out
+                 flex items-center justify-center"
+        >
+          <div class="bg-base-200 w-full h-full p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-8 justify-center">
+            <!-- Gradient border around avatar -->
+            <div class="rounded-full bg-gradient-to-r from-primary to-accent p-1">
+              <img
+                src="./images/MyAvatar.png"
+                alt="Profile"
+                class="rounded-full shadow-lg w-48 h-48 object-cover"
+              />
+            </div>
+            <div>
+              <h2 class="text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                About Me
+              </h2>
+              <p class="text-lg max-w-lg">
+                Hey there! I’m Justin—aka Imp0str—a self‑taught Godot game dev, Python fan, and web tinkerer. As a game dev, father, and lifelong learner, I get a kick out of diving into new tech and turning fresh ideas into playable prototypes or handy tools. Along the way, I’ve built a few personal projects and picked up tons of lessons. This portfolio is where I share what I’ve learned, showcase my experiments, and invite you to join me on the next adventure. Let’s see what we can create together! <<< Yes, that’s really me—AI‑enhanced! 😉
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div id="projects" class="tab-content hidden w-full max-w-5xl flex items-center justify-center h-[60vh]">
+        <div
+          class="w-full h-full p-1 rounded-lg
+                 bg-gradient-to-r from-primary to-accent
+                 hover:from-accent hover:to-primary
+                 transition-colors duration-500 ease-in-out
+                 flex flex-col"
+        >
+          <div class="bg-base-200 w-full h-full p-6 rounded-lg shadow-lg flex flex-col">
+            <h2 class="text-3xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Projects
+            </h2>
+            <div role="tablist" class="tabs tabs-bordered justify-center mb-6">
+              <button role="tab" class="tab tab-active data-custom-tab bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-tab="games-tab">Games</button>
+              <button role="tab" class="tab data-custom-tab bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-tab="programming-tab">Programming</button>
+            </div>
+
+            <!-- Games Carousel -->
+            <div id="games-tab" class="projects-tab-content block h-full flex items-center justify-center">
+              <div class="carousel carousel-center bg-neutral rounded-box max-w-4xl space-x-4 p-4 mx-auto h-[40vh]">
+                <div class="carousel-item"
+                     data-title="Hangman"
+                     data-desc="A Pokémon-themed hangman game built with the Godot game engine and a lot of python scraping."
+                     data-images="pokemon1.png,pokemon2.png,pokemon3.png"
+                     data-github="https://ximp0sterx.itch.io/pokemonhangman-v2">
+                  <div class="card bg-base-100 shadow-xl w-80 h-full overflow-hidden">
+                    <figure class="w-full h-full">
+                      <img src="./images/pokemonmain.jpg" alt="Hangman" class="w-full h-full object-cover"/>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Programming Carousel -->
+            <div id="programming-tab" class="projects-tab-content hidden h-full flex items-center justify-center">
+              <div class="carousel carousel-center bg-neutral rounded-box max-w-4xl space-x-4 p-4 mx-auto h-[40vh]">
+                <div class="carousel-item"
+                     data-title="PersonaPal"
+                     data-desc="Chat with any character you want!"
+                     data-images="personapal1.jpg,personapal2.jpg,personapal3.jpg,personapal4.jpg"
+                     data-github="https://github.com/imp0str"
+                     data-link-url="https://PersonaPal.pythonanywhere.com"
+                     data-link-label="Try it out here">
+                  <div class="card bg-base-100 shadow-xl w-80 h-full overflow-hidden">
+                    <figure class="w-full h-full">
+                      <!-- adjust to whichever image you want as the thumbnail -->
+                      <img src="./images/personapalmain.png" 
+                           alt="PersonaPal preview" 
+                           class="w-full h-full object-cover"/>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL OVERLAY -->
+      <div id="project-modal-overlay" class="absolute inset-0 bg-black/50 z-20 hidden"></div>
+
+      <!-- MODAL -->
+      <div id="project-modal" class="absolute inset-0 flex items-start justify-center pt-52 z-30 hidden">
+        <div class="w-full max-w-5xl mx-auto">
+          <div id="modal-wrapper" class="w-full h-[60vh] p-1 rounded-lg bg-gradient-to-r from-primary to-accent flex flex-col">
+            <div id="modal-content" class="modal-content bg-base-200 w-full h-full p-6 rounded-lg shadow-xl relative">
+              <button id="modal-close" class="btn btn-sm btn-circle absolute right-4 top-4 z-40">✕</button>
+              <div class="flex h-full">
+                <!-- MODAL INFO -->
+                <div id="modal-info" class="w-1/3 p-6 text-center">
+                  <!-- Title & desc injected here -->
+                  <div class="w-48 h-[2px] bg-primary mx-auto my-4"></div>
+                </div>
+                <!-- VERTICAL DIVIDER -->
+                <div class="border-l-2 border-primary my-4 mx-6"></div>
+                <!-- SLIDESHOW & LINK -->
+                <div class="w-2/3 p-6 flex flex-col items-center">
+                  <div id="modal-slider" class="relative w-full h-60 rounded-md overflow-hidden mb-4"></div>
+                  <div id="modal-dots" class="flex space-x-4 mb-4"></div>
+                  <div id="modal-itch-embed" class="w-full h-20 flex items-center justify-center overflow-hidden text-center pt-4">
+                    <!-- gradient link injected here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div id="contact" class="tab-content hidden w-full max-w-5xl flex items-center justify-center h-[60vh]">
+        <div
+          class="w-full h-full p-1 rounded-lg
+                 bg-gradient-to-r from-primary to-accent
+                 hover:from-accent hover:to-primary
+                 transition-colors duration-500 ease-in-out
+                 flex items-center justify-center"
+        >
+        <div id="form-message" class="hidden p-4 mb-4 rounded text-center"></div>
+          <form id="contact-form" action="https://formspree.io/f/xwpolkzo" method="POST"
+                class="bg-base-200 w-full h-full p-6 rounded-lg shadow-lg flex flex-col justify-between gap-4 overflow-hidden">
+            <div>
+              <h2 class="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Contact Me</h2>
+              <p class="text-center mb-4">Want to work together? Let’s chat!</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow">
+              <div class="relative form-control w-full">
+                <span class="absolute -top-2 left-4 bg-base-200 px-2 text-sm text-base-content">Name</span>
+                <input id="name" name="name" type="text" required placeholder="Your name" class="input input-bordered w-full pt-4"/>
+              </div>
+              <div class="relative form-control w-full">
+                <span class="absolute -top-2 left-4 bg-base-200 px-2 text-sm text-base-content">Email</span>
+                <input id="email" name="_replyto" type="email" required placeholder="you@example.com" class="input input-bordered w-full pt-4"/>
+              </div>
+              <div class="relative form-control w-full md:col-span-2">
+                <span class="absolute -top-2 left-4 bg-base-200 px-2 text-sm text-base-content">Subject</span>
+                <input id="user_subject" name="user_subject" type="text" required placeholder="Brief subject" class="input input-bordered w-full pt-4"/>
+              </div>
+              <input type="hidden" name="subject" value="Portfolio Message from {{ name }}: {{ user_subject }}"/>
+              <div class="relative form-control w-full md:col-span-2 flex-grow">
+                <span class="absolute -top-2 left-4 bg-base-200 px-2 text-sm text-base-content">Message</span>
+                <textarea id="message" name="message" required placeholder="Your message..." class="textarea textarea-bordered w-full max-h-[15vh] overflow-y-auto pt-6"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-full md:w-auto self-center mt-2">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
