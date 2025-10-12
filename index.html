@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="imp0str.dev - Personal Portfolio">
+    <title>imp0str.dev | Portfolio</title>
+    
+    <!-- Google Fonts - Oxanium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="portfolio-container">
+        <!-- Dotted Background Canvas -->
+        <canvas class="canvas-background" aria-hidden="true"></canvas>
+        
+        <div class="content-wrapper">
+            <!-- Navigation -->
+            <nav class="nav-bar" aria-label="Main navigation">
+                <a href="#home" class="wordmark">imp0str.dev</a>
+                
+                <div class="logo-container">
+                    <img src="images/Logo.png" alt="imp0str logo" class="logo">
+                </div>
+                
+                <button 
+                    class="hamburger"
+                    aria-label="Toggle menu"
+                    aria-expanded="false"
+                    aria-controls="main-menu"
+                >
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+
+            <!-- Context Menu -->
+            <div 
+                id="main-menu"
+                class="context-menu"
+                role="menu"
+                aria-label="Navigation menu"
+                style="display: none;"
+            >
+                <button class="menu-item active" data-section="home" role="menuitem" tabindex="0">
+                    Home
+                </button>
+                <button class="menu-item" data-section="about" role="menuitem" tabindex="0">
+                    About
+                </button>
+                <button class="menu-item" data-section="projects" role="menuitem" tabindex="0">
+                    Projects
+                </button>
+                <button class="menu-item" data-section="contact" role="menuitem" tabindex="0">
+                    Contact
+                </button>
+                
+                <!-- Divider -->
+                <div class="menu-divider"></div>
+                
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://github.com/imp0str" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="github-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#BC13FE" />
+                                    <stop offset="100%" style="stop-color:#00E5FF" />
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#github-gradient)" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com/@imp0strdev" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="youtube-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#BC13FE" />
+                                    <stop offset="100%" style="stop-color:#00E5FF" />
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#youtube-gradient)" d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                        </svg>
+                    </a>
+                    <a href="https://imp0str.itch.io" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Itch.io">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="itch-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#BC13FE" />
+                                    <stop offset="100%" style="stop-color:#00E5FF" />
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#itch-gradient)" d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.137 2.41 2.466 2.41h.024c1.33 0 2.466-1.102 2.466-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612-3.253-.114-5.508-.134-8.87-.134-3.362 0-5.617.02-8.87.134zm6.67 6.474c0 .32.015.646.047.968.03.332.098.61.202.865.124.264.295.48.512.64.215.163.492.238.83.238.34 0 .615-.075.83-.238.22-.16.39-.376.512-.64.104-.254.172-.533.202-.865.032-.322.048-.648.048-.968 0-.33-.018-.658-.053-.992-.036-.332-.12-.627-.25-.88-.13-.26-.314-.47-.543-.63-.23-.162-.517-.244-.866-.244-.348 0-.635.082-.866.244-.228.16-.412.37-.543.63-.13.253-.214.548-.25.88-.035.334-.053.662-.053.992zm.04 6.554c0 .248.034.504.106.76.07.26.184.497.34.713.157.217.368.395.632.533.264.14.596.21 1.003.21.406 0 .738-.07 1.002-.21.264-.138.475-.316.632-.533.156-.216.27-.453.34-.713.072-.256.107-.512.107-.76 0-.276-.035-.537-.107-.785-.07-.247-.184-.466-.34-.654-.157-.188-.368-.335-.632-.447-.264-.11-.596-.166-1.002-.166-.407 0-.74.055-1.003.166-.264.112-.475.26-.632.447-.156.188-.27.407-.34.654-.072.248-.106.51-.106.785z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content Stage -->
+            <main class="main-stage">
+                <div class="content-container">
+                    <!-- Home Section -->
+                    <div class="section" data-section="home">
+                        <div class="home-section">
+                            <h1>
+                                Hey there! I'm <span class="gradient-text">imp0str</span>.
+                            </h1>
+                            <h2>
+                                I am a <span id="typed-text" class="typed-text"></span>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <!-- About Section -->
+                    <div class="section" data-section="about" style="display: none;">
+                        <h2 class="section-title gradient-text">About</h2>
+                        <div class="about-content">
+                            <p>
+                                I'm a passionate self-taught developer and creator with a love for building engaging digital experiences. 
+                                From crafting immersive games to designing beautiful web applications, I bring ideas to life with code.
+                            </p>
+                            <p>
+                                With expertise spanning game development, web design, and software engineering, I thrive on 
+                                solving complex problems and creating solutions that make a difference.
+                            </p>
+                            <p>
+                                When I'm not coding, you'll find me spending quality time with my family, exploring new 
+                                technologies, or playing video games.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Projects Section -->
+                    <div class="section" data-section="projects" style="display: none;">
+                        <h2 class="section-title gradient-text">Projects</h2>
+                        <div class="projects-layout">
+                            <!-- Info Panel - Left -->
+                            <div class="project-info-panel">
+                                <!-- Project Name -->
+                                <h3 class="project-name gradient-text" id="projectName">PersonaPal</h3>
+
+                                <!-- Carousel -->
+                                <div class="project-carousel" role="region" aria-label="Project images carousel" tabindex="0">
+                                    <img src="https://placehold.co/600x400/BC13FE/FFFFFF?text=PersonaPal+Chat" alt="Project screenshot" class="carousel-image">
+                                    <div class="carousel-controls">
+                                        <button class="carousel-btn" id="prevImage" aria-label="Previous image">‹</button>
+                                        <button class="carousel-btn" id="nextImage" aria-label="Next image">›</button>
+                                    </div>
+                                </div>
+
+                                <!-- Description -->
+                                <p class="project-description" id="projectDescription">
+                                    An AI-powered character chatbot that brings virtual personalities to life. Engage in natural conversations with your favourite characters, each with their own traits and communication styles.
+                                </p>
+
+                                <!-- Links -->
+                                <div class="project-links">
+                                    <a href="#" class="project-link" id="liveDemo" target="_blank" rel="noopener noreferrer">
+                                        Live Demo
+                                    </a>
+                                    <a href="#" class="project-link" id="repoLink" target="_blank" rel="noopener noreferrer">
+                                        Repository
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Project Badges - Right -->
+                            <div class="project-badges" role="list" aria-label="Project list">
+                                <button class="project-badge active" data-project="0" role="listitem">
+                                    <div class="project-badge-title">PersonaPal</div>
+                                    <div class="project-badge-tech">AI Character Chatbot</div>
+                                </button>
+                                <button class="project-badge" data-project="1" role="listitem">
+                                    <div class="project-badge-title">Pokemon Guessing Game</div>
+                                    <div class="project-badge-tech">Godot Game</div>
+                                </button>
+                                <button class="project-badge" data-project="2" role="listitem">
+                                    <div class="project-badge-title">Planet Defense</div>
+                                    <div class="project-badge-tech">Godot Game</div>
+                                </button>
+                                <button class="project-badge" data-project="3" role="listitem">
+                                    <div class="project-badge-title">LunaIPTV</div>
+                                    <div class="project-badge-tech">Python IPTV Player</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="section" data-section="contact" style="display: none;">
+                        <h2 class="section-title gradient-text">Contact</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    required
+                                    placeholder="Your name"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    placeholder="your.email@example.com"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    required
+                                    placeholder="Your message..."
+                                ></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Typed.js CDN -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/portfolio.js"></script>
+</body>
+</html>
