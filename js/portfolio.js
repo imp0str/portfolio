@@ -1,103 +1,101 @@
-// Portfolio JavaScript - Vanilla JS conversion from React
+// Modern imp0str Brand Portfolio JavaScript Implementation
 
-// Projects Data
-const projectsData = [
-  {
+// Projects Data Store for Gallery Modal
+const projectsData = {
+  1: {
     id: 1,
-    title: 'PersonaPal',
-    tech: 'AI Character Chatbot',
-    description: 'An AI-powered character chatbot that brings virtual personalities to life. Engage in natural conversations with your favourite characters, each with their own traits and communication styles.',
+    title: 'PersonaPal AI Character Chatbot',
+    tag: 'Web Application',
+    description: 'An interactive AI-powered character chatbot that brings virtual personalities to life. Features customized character prompt personas, context memory, and responsive conversational UI.',
     images: [
       'images/PersonaPal/1.jpg',
       'images/PersonaPal/2.jpg',
       'images/PersonaPal/3.jpg',
       'images/PersonaPal/4.jpg',
     ],
-    liveUrl: 'https://personapal.pythonanywhere.com/',
     repoUrl: 'https://github.com/imp0str/PersonaPal',
+    liveUrl: null, // Audited dead link removed
   },
-  {
+  2: {
     id: 2,
     title: 'Pokemon Guessing Game',
-    tech: 'Godot Game',
-    description: 'A fun and engaging Pokemon guessing game built with Godot engine. Test your Pokemon knowledge by identifying characters from silhouettes, sprites, and hints. Features full normal and shiny pokedex and online leaderboards.',
+    tag: 'Godot Game',
+    description: 'A fun and engaging Pokemon guessing game built with Godot engine. Test your Pokemon knowledge by identifying characters from silhouettes, sprites, and hints. Features full normal and shiny Pokedex and online leaderboards.',
     images: [
       'images/PokemonGuessingGame/1.png',
       'images/PokemonGuessingGame/2.png',
       'images/PokemonGuessingGame/3.png',
       'images/PokemonGuessingGame/4.png',
     ],
-    liveUrl: 'https://imp0str.itch.io/pokemon-guessing-game',
     repoUrl: 'https://github.com/imp0str/PokemonGuessingGame',
+    liveUrl: 'https://imp0str.itch.io/pokemon-guessing-game',
   },
-  {
+  3: {
     id: 3,
     title: 'Planet Defense',
-    tech: 'Godot Game',
+    tag: 'Godot Game',
     description: 'An action-packed space defense game where you protect your planet from incoming asteroids and alien threats. Built with Godot, featuring smooth controls, power-ups, and progressive difficulty.',
     images: [
       'images/PlanetDefense/1.png',
       'images/PlanetDefense/2.png',
       'images/PlanetDefense/3.png',
     ],
-    liveUrl: 'https://imp0str.itch.io/planet-defense',
     repoUrl: 'https://github.com/imp0str/PlanetDefense',
+    liveUrl: 'https://imp0str.itch.io/planet-defense',
   },
-  {
+  4: {
     id: 4,
-    title: 'LunaIPTV',
-    tech: 'Python IPTV Player',
-    description: 'A feature-rich IPTV Xstream player built with Python. Stream live TV channels, movies, and series with an intuitive interface. Supports multiple playlist formats and includes EPG integration.',
+    title: 'LunaIPTV Stream Player',
+    tag: 'Python Application',
+    description: 'A feature-rich IPTV Xtream player built with Python. Stream live TV channels, movies, and series with an intuitive interface. Supports multiple playlist formats and includes EPG integration.',
     images: [
       'images/LunaIPTV/1.png',
       'images/LunaIPTV/2.png',
       'images/LunaIPTV/3.png',
       'images/LunaIPTV/4.png',
     ],
-    liveUrl: null,
     repoUrl: 'https://github.com/imp0str/LunaIPTV',
-  },
-];
+    liveUrl: null,
+  }
+};
 
-// State
-let currentSection = 'home';
-let currentProjectIndex = 0;
-let currentImageIndex = 0;
-let isMenuOpen = false;
+// Current Modal Gallery State
+let currentModalProject = null;
+let currentModalImageIdx = 0;
 
-// Initialize when DOM is ready
+// Initialize Everything on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
-  initDottedBackground();
-  initTypedEffect();
-  initNavigation();
-  initProjects();
+  initParticleBackground();
+  initTypedText();
+  initMobileNavigation();
+  initProjectFilters();
+  initProjectModal();
+  initEstimatorWidget();
   initContactForm();
+  initFooterYear();
 });
 
 // =============================================
-// Dotted Background Canvas
+// Interactive Canvas Particle Background
 // =============================================
-function initDottedBackground() {
+function initParticleBackground() {
   const canvas = document.querySelector('.canvas-background');
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  const mousePos = { x: 0, y: 0 };
-  let animationFrameId = null;
   let dots = [];
+  const mousePos = { x: -1000, y: -1000 };
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Set canvas size
   const resizeCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    initDots();
+    createDots();
   };
 
-  // Initialize dots
-  const initDots = () => {
+  const createDots = () => {
     dots = [];
-    const spacing = 25;
+    const spacing = 32;
     const cols = Math.floor(canvas.width / spacing);
     const rows = Math.floor(canvas.height / spacing);
 
@@ -106,8 +104,8 @@ function initDottedBackground() {
         dots.push({
           x: i * spacing + spacing / 2,
           y: j * spacing + spacing / 2,
-          originalX: i * spacing + spacing / 2,
-          originalY: j * spacing + spacing / 2,
+          originX: i * spacing + spacing / 2,
+          originY: j * spacing + spacing / 2,
           vx: 0,
           vy: 0,
         });
@@ -115,356 +113,412 @@ function initDottedBackground() {
     }
   };
 
-  // Mouse move handler
   const handleMouseMove = (e) => {
     mousePos.x = e.clientX;
     mousePos.y = e.clientY;
   };
 
-  // Touch move handler
   const handleTouchMove = (e) => {
-    if (e.touches.length > 0) {
+    if (e.touches && e.touches.length > 0) {
       mousePos.x = e.touches[0].clientX;
       mousePos.y = e.touches[0].clientY;
     }
   };
 
-  // Animation loop
-  const animate = () => {
+  const render = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw orb gradient (behind dots)
-    if (!prefersReducedMotion) {
-      const gradient = ctx.createRadialGradient(
-        mousePos.x,
-        mousePos.y,
-        0,
-        mousePos.x,
-        mousePos.y,
-        100
+    if (!prefersReducedMotion && mousePos.x > 0) {
+      // Glow under cursor
+      const radialGradient = ctx.createRadialGradient(
+        mousePos.x, mousePos.y, 0,
+        mousePos.x, mousePos.y, 140
       );
-      gradient.addColorStop(0, 'rgba(188, 19, 254, 0.25)');
-      gradient.addColorStop(0.5, 'rgba(0, 229, 255, 0.15)');
-      gradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
-      
-      ctx.globalCompositeOperation = 'screen';
-      ctx.fillStyle = gradient;
+      radialGradient.addColorStop(0, 'rgba(188, 19, 254, 0.2)');
+      radialGradient.addColorStop(0.5, 'rgba(0, 229, 255, 0.1)');
+      radialGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      ctx.fillStyle = radialGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.globalCompositeOperation = 'source-over';
     }
 
-    // Draw and update dots
     dots.forEach(dot => {
-      if (!prefersReducedMotion) {
-        // Calculate distance from mouse
+      if (!prefersReducedMotion && mousePos.x > 0) {
         const dx = mousePos.x - dot.x;
         const dy = mousePos.y - dot.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = 120;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = 100;
 
-        if (distance < maxDistance) {
-          // Push dots away from cursor
-          const force = (maxDistance - distance) / maxDistance;
+        if (dist < maxDist) {
+          const force = (maxDist - dist) / maxDist;
           const angle = Math.atan2(dy, dx);
-          dot.vx -= Math.cos(angle) * force * 3;
-          dot.vy -= Math.sin(angle) * force * 3;
+          dot.vx -= Math.cos(angle) * force * 2.5;
+          dot.vy -= Math.sin(angle) * force * 2.5;
         }
 
-        // Apply spring force to return to original position
-        const springForce = 0.1;
-        dot.vx += (dot.originalX - dot.x) * springForce;
-        dot.vy += (dot.originalY - dot.y) * springForce;
+        // Return spring physics
+        dot.vx += (dot.originX - dot.x) * 0.08;
+        dot.vy += (dot.originY - dot.y) * 0.08;
+        dot.vx *= 0.88;
+        dot.vy *= 0.88;
 
-        // Apply damping
-        dot.vx *= 0.9;
-        dot.vy *= 0.9;
-
-        // Update position
         dot.x += dot.vx;
         dot.y += dot.vy;
       }
 
-      // Draw dot
       ctx.beginPath();
-      ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(230, 247, 255, 0.3)';
+      ctx.arc(dot.x, dot.y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(240, 246, 252, 0.25)';
       ctx.fill();
     });
 
-    animationFrameId = requestAnimationFrame(animate);
+    requestAnimationFrame(render);
   };
 
-  // Initialize
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('mousemove', handleMouseMove);
   window.addEventListener('touchmove', handleTouchMove, { passive: true });
-  window.addEventListener('touchstart', handleTouchMove, { passive: true });
-  animate();
+  render();
 }
 
 // =============================================
-// Typed.js Effect for Home Section
+// Typed Text Hero Animation
 // =============================================
-function initTypedEffect() {
-  const typedElement = document.getElementById('typed-text');
-  
-  if (!typedElement) {
-    console.error('Typed element not found');
-    return;
-  }
-  
-  if (typeof Typed === 'undefined') {
-    console.error('Typed.js not loaded');
-    return;
-  }
-  
-  try {
+function initTypedText() {
+  const typedElem = document.getElementById('typed-text');
+  if (!typedElem) return;
+
+  const phrases = [
+    'Custom Business Websites',
+    'High-Performance Web Applications',
+    'Modern Website Redesigns',
+    'Interactive Client Tools & Software'
+  ];
+
+  if (typeof Typed !== 'undefined') {
     new Typed('#typed-text', {
-      strings: ['Father', 'Husband', 'Game Developer', 'Web Designer'],
-      typeSpeed: 80,
-      backSpeed: 50,
-      backDelay: 2000,
+      strings: phrases,
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 2200,
       loop: true,
       showCursor: true,
       cursorChar: '|',
     });
-    console.log('Typed.js initialized successfully');
-  } catch (error) {
-    console.error('Error initializing Typed.js:', error);
+  } else {
+    // Fallback simple Rotator if Typed.js fails to load
+    let idx = 0;
+    setInterval(() => {
+      typedElem.textContent = phrases[idx];
+      idx = (idx + 1) % phrases.length;
+    }, 3000);
   }
 }
 
 // =============================================
-// Navigation
+// Mobile Drawer & Smooth Scroll Navigation
 // =============================================
-function initNavigation() {
-  const hamburger = document.querySelector('.hamburger');
-  const menu = document.getElementById('main-menu');
-  const menuItems = document.querySelectorAll('.menu-item');
+function initMobileNavigation() {
+  const hamburgerBtn = document.querySelector('.hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
 
-  // Toggle menu
-  hamburger.addEventListener('click', () => {
-    isMenuOpen = !isMenuOpen;
-    hamburger.classList.toggle('open');
-    menu.style.display = isMenuOpen ? 'block' : 'none';
-    hamburger.setAttribute('aria-expanded', isMenuOpen);
+  if (!hamburgerBtn || !mobileMenu) return;
+
+  const toggleMenu = (open) => {
+    const isOpen = open !== undefined ? open : !hamburgerBtn.classList.contains('open');
+    hamburgerBtn.classList.toggle('open', isOpen);
+    mobileMenu.classList.toggle('active', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    mobileMenu.setAttribute('aria-hidden', !isOpen);
+  };
+
+  hamburgerBtn.addEventListener('click', () => toggleMenu());
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
   });
 
-  // Menu item clicks
-  menuItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const targetSection = item.getAttribute('data-section');
-      changeSection(targetSection);
-      
-      // Update active menu item
-      menuItems.forEach(mi => mi.classList.remove('active'));
-      item.classList.add('active');
-      
-      // Close menu
-      isMenuOpen = false;
-      hamburger.classList.remove('open');
-      menu.style.display = 'none';
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Close menu on Escape key
+  // Close on escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isMenuOpen) {
-      isMenuOpen = false;
-      hamburger.classList.remove('open');
-      menu.style.display = 'none';
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Arrow key navigation in menu
-  document.addEventListener('keydown', (e) => {
-    if (!isMenuOpen) return;
-
-    const menuItemsArray = Array.from(menuItems);
-    const currentIndex = menuItemsArray.findIndex(item => item === document.activeElement);
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      const nextIndex = (currentIndex + 1) % menuItemsArray.length;
-      menuItemsArray[nextIndex].focus();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      const prevIndex = currentIndex <= 0 ? menuItemsArray.length - 1 : currentIndex - 1;
-      menuItemsArray[prevIndex].focus();
-    }
-  });
-
-  // Click outside to close menu
-  document.addEventListener('mousedown', (e) => {
-    if (isMenuOpen && 
-        !menu.contains(e.target) && 
-        !hamburger.contains(e.target)) {
-      isMenuOpen = false;
-      hamburger.classList.remove('open');
-      menu.style.display = 'none';
-      hamburger.setAttribute('aria-expanded', 'false');
+    if (e.key === 'Escape' && hamburgerBtn.classList.contains('open')) {
+      toggleMenu(false);
     }
   });
 }
 
 // =============================================
-// Section Changes with Animation
+// Project Category Filter Tabs
 // =============================================
-function changeSection(newSection) {
-  if (newSection === currentSection) return;
+function initProjectFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
 
-  const sections = document.querySelectorAll('.section');
-  const currentSectionEl = document.querySelector(`.section[data-section="${currentSection}"]`);
-  const newSectionEl = document.querySelector(`.section[data-section="${newSection}"]`);
+  if (!filterBtns.length || !projectCards.length) return;
 
-  if (!currentSectionEl || !newSectionEl) return;
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
 
-  // Animate out current section
-  currentSectionEl.classList.add('animate__animated', 'animate__fadeOutLeft');
-  currentSectionEl.style.animationDuration = '0.35s';
-  currentSectionEl.style.zIndex = '9';
+      // Update active button state
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
 
-  // After animation, hide current and show new
-  currentSectionEl.addEventListener('animationend', function handler() {
-    currentSectionEl.style.display = 'none';
-    currentSectionEl.classList.remove('animate__animated', 'animate__fadeOutLeft');
-    currentSectionEl.removeEventListener('animationend', handler);
+      // Filter cards
+      projectCards.forEach(card => {
+        const categories = card.getAttribute('data-category') || '';
+        if (filter === 'all' || categories.includes(filter)) {
+          card.style.display = 'flex';
+          card.classList.add('animate__animated', 'animate__fadeIn');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
   });
-
-  // Show and animate in new section
-  newSectionEl.style.display = 'flex';
-  newSectionEl.style.zIndex = '10';
-  newSectionEl.classList.add('animate__animated', 'animate__fadeInRight');
-  newSectionEl.style.animationDuration = '0.35s';
-
-  newSectionEl.addEventListener('animationend', function handler() {
-    newSectionEl.classList.remove('animate__animated', 'animate__fadeInRight');
-    newSectionEl.removeEventListener('animationend', handler);
-  });
-
-  currentSection = newSection;
 }
 
 // =============================================
-// Projects Section
+// Project Gallery Modal
 // =============================================
-function initProjects() {
-  const projectBadges = document.querySelectorAll('.project-badge');
-  const prevBtn = document.getElementById('prevImage');
-  const nextBtn = document.getElementById('nextImage');
-  const carouselDiv = document.querySelector('.project-carousel');
+function initProjectModal() {
+  const modal = document.getElementById('projectModal');
+  const modalClose = document.getElementById('modalClose');
+  const modalImage = document.getElementById('modalImage');
+  const modalCounter = document.getElementById('modalCounter');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalLinks = document.getElementById('modalLinks');
+  const prevBtn = document.getElementById('modalPrev');
+  const nextBtn = document.getElementById('modalNext');
+  const backdrop = modal ? modal.querySelector('.modal-backdrop') : null;
 
-  // Project badge clicks
-  projectBadges.forEach((badge, index) => {
-    badge.addEventListener('click', () => {
-      currentProjectIndex = index;
-      currentImageIndex = 0;
-      updateProjectDisplay();
-      
-      // Update active badge
-      projectBadges.forEach(b => b.classList.remove('active'));
-      badge.classList.add('active');
+  if (!modal) return;
+
+  const openModal = (projectId) => {
+    const proj = projectsData[projectId];
+    if (!proj) return;
+
+    currentModalProject = proj;
+    currentModalImageIdx = 0;
+
+    modalTitle.textContent = proj.title;
+    modalDesc.textContent = proj.description;
+
+    // Render Action Buttons
+    modalLinks.innerHTML = '';
+    if (proj.liveUrl) {
+      const liveA = document.createElement('a');
+      liveA.href = proj.liveUrl;
+      liveA.target = '_blank';
+      liveA.rel = 'noopener noreferrer';
+      liveA.className = 'btn btn-primary btn-sm';
+      liveA.textContent = 'Live Project';
+      modalLinks.appendChild(liveA);
+    }
+    if (proj.repoUrl) {
+      const repoA = document.createElement('a');
+      repoA.href = proj.repoUrl;
+      repoA.target = '_blank';
+      repoA.rel = 'noopener noreferrer';
+      repoA.className = 'btn btn-outline btn-sm';
+      repoA.textContent = 'GitHub Repo';
+      modalLinks.appendChild(repoA);
+    }
+
+    updateModalImage();
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  const updateModalImage = () => {
+    if (!currentModalProject) return;
+    const images = currentModalProject.images;
+    modalImage.src = images[currentModalImageIdx];
+    modalCounter.textContent = `${currentModalImageIdx + 1} / ${images.length}`;
+  };
+
+  // Event Listeners for Open Modal Buttons
+  document.querySelectorAll('.open-project-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pId = btn.getAttribute('data-project-id');
+      openModal(pId);
     });
   });
 
-  // Carousel navigation
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      currentImageIndex--;
-      if (currentImageIndex < 0) {
-        currentImageIndex = projectsData[currentProjectIndex].images.length - 1;
+      if (!currentModalProject) return;
+      currentModalImageIdx--;
+      if (currentModalImageIdx < 0) {
+        currentModalImageIdx = currentModalProject.images.length - 1;
       }
-      updateProjectDisplay();
+      updateModalImage();
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      currentImageIndex++;
-      if (currentImageIndex >= projectsData[currentProjectIndex].images.length) {
-        currentImageIndex = 0;
+      if (!currentModalProject) return;
+      currentModalImageIdx++;
+      if (currentModalImageIdx >= currentModalProject.images.length) {
+        currentModalImageIdx = 0;
       }
-      updateProjectDisplay();
+      updateModalImage();
     });
   }
 
-  // Keyboard navigation for carousel
-  if (carouselDiv) {
-    carouselDiv.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        prevBtn.click();
-      } else if (e.key === 'ArrowRight') {
-        nextBtn.click();
-      }
-    });
-  }
-
-  // Initial display
-  updateProjectDisplay();
-}
-
-function updateProjectDisplay() {
-  const project = projectsData[currentProjectIndex];
-  
-  // Update project name
-  const projectName = document.getElementById('projectName');
-  if (projectName) {
-    projectName.textContent = project.title;
-  }
-
-  // Update image
-  const carouselImage = document.querySelector('.carousel-image');
-  if (carouselImage) {
-    carouselImage.src = project.images[currentImageIndex];
-    carouselImage.alt = `${project.title} screenshot ${currentImageIndex + 1}`;
-  }
-
-  // Update description
-  const description = document.getElementById('projectDescription');
-  if (description) {
-    description.textContent = project.description;
-  }
-
-  // Update links
-  const liveDemo = document.getElementById('liveDemo');
-  const repoLink = document.getElementById('repoLink');
-  
-  if (liveDemo) {
-    if (project.liveUrl) {
-      liveDemo.href = project.liveUrl;
-      liveDemo.style.display = 'inline-flex';
-    } else {
-      liveDemo.style.display = 'none';
-    }
-  }
-  
-  if (repoLink) repoLink.href = project.repoUrl;
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft' && prevBtn) prevBtn.click();
+    if (e.key === 'ArrowRight' && nextBtn) nextBtn.click();
+  });
 }
 
 // =============================================
-// Contact Form
+// Interactive Scope & Project Estimator Widget
+// =============================================
+function initEstimatorWidget() {
+  const typeOptions = document.querySelectorAll('.estimator-options[data-type="project-type"] .est-option');
+  const pageOptions = document.querySelectorAll('.estimator-options[data-type="page-count"] .est-option');
+  const featureCheckboxes = document.querySelectorAll('.est-checkbox input[type="checkbox"]');
+
+  const summaryType = document.getElementById('summaryType');
+  const summaryPages = document.getElementById('summaryPages');
+  const summaryTime = document.getElementById('summaryTime');
+  const summaryFeaturesList = document.getElementById('summaryFeaturesList');
+  const applyEstimateBtn = document.getElementById('applyEstimateBtn');
+
+  if (!summaryType || !summaryPages || !summaryTime) return;
+
+  const updateSummary = () => {
+    const activeType = document.querySelector('.estimator-options[data-type="project-type"] .est-option.active');
+    const activePages = document.querySelector('.estimator-options[data-type="page-count"] .est-option.active');
+
+    if (activeType) {
+      summaryType.textContent = activeType.querySelector('strong').textContent;
+      summaryTime.textContent = activeType.getAttribute('data-time') || '1-2 Weeks';
+    }
+
+    if (activePages) {
+      summaryPages.textContent = activePages.querySelector('strong').textContent;
+    }
+
+    // Features
+    summaryFeaturesList.innerHTML = '';
+    featureCheckboxes.forEach(cb => {
+      if (cb.checked) {
+        const li = document.createElement('li');
+        li.textContent = cb.value;
+        summaryFeaturesList.appendChild(li);
+      }
+    });
+  };
+
+  typeOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      typeOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      updateSummary();
+    });
+  });
+
+  pageOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      pageOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      updateSummary();
+    });
+  });
+
+  featureCheckboxes.forEach(cb => {
+    cb.addEventListener('change', updateSummary);
+  });
+
+  if (applyEstimateBtn) {
+    applyEstimateBtn.addEventListener('click', () => {
+      const selectedType = summaryType.textContent;
+      const selectedPages = summaryPages.textContent;
+      const selectedTimeline = summaryTime.textContent;
+
+      const checkedFeatures = Array.from(featureCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value)
+        .join(', ');
+
+      const serviceSelect = document.getElementById('service');
+      const messageTextarea = document.getElementById('message');
+
+      if (serviceSelect) {
+        if (selectedType.includes('Redesign')) {
+          serviceSelect.value = 'Website Redesign';
+        } else if (selectedType.includes('Application')) {
+          serviceSelect.value = 'Custom Web Application';
+        } else {
+          serviceSelect.value = 'New Business Website';
+        }
+      }
+
+      if (messageTextarea) {
+        messageTextarea.value = `[Project Scope Estimate]\n- Project Type: ${selectedType}\n- Scope: ${selectedPages}\n- Target Timeline: ${selectedTimeline}\n- Features Requested: ${checkedFeatures}\n\nAdditional Details / Business Requirements:\n`;
+      }
+
+      // Smooth scroll to contact form
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  updateSummary();
+}
+
+// =============================================
+// Contact Form Submission Logic
 // =============================================
 function initContactForm() {
   const form = document.getElementById('contactForm');
-  
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      
-      // Mailto fallback
-      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\n\nEmail: ${email}\n\nMessage:\n${message}`
-      );
-      
-      window.location.href = `mailto:imp0str.dev@gmail.com?subject=${subject}&body=${body}`;
-    });
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const business = document.getElementById('business') ? document.getElementById('business').value : '';
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+
+    const subject = encodeURIComponent(`New Project Enquiry from ${name}${business ? ' (' + business + ')' : ''}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nBusiness: ${business || 'N/A'}\nService Requested: ${service}\n\nMessage / Requirements:\n${message}`
+    );
+
+    window.location.href = `mailto:imp0str.dev@gmail.com?subject=${subject}&body=${body}`;
+  });
+}
+
+// Auto Update Footer Copyright Year
+function initFooterYear() {
+  const yearElem = document.getElementById('currentYear');
+  if (yearElem) {
+    yearElem.textContent = new Date().getFullYear();
   }
 }
