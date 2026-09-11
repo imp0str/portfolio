@@ -1,780 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0A0A12">
-    <meta name="description" content="imp0str.dev - Professional Independent Web Developer crafting high-performance websites, web applications, and custom digital experiences for small and growing businesses.">
-    <meta name="keywords" content="web developer, website redesign, custom web development, small business websites, imp0str, software engineer, frontend developer">
-    <meta name="author" content="imp0str">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.imp0str.dev/">
-    <meta property="og:title" content="imp0str.dev | High-Performance Websites & Digital Solutions">
-    <meta property="og:description" content="Custom web development, modern site redesigns, and high-converting web applications built by an independent developer.">
-    <meta property="og:image" content="images/Logo.png">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="imp0str.dev | High-Performance Websites & Digital Solutions">
-    <meta name="twitter:description" content="Custom web development, modern site redesigns, and high-converting web applications built by an independent developer.">
-    <meta name="twitter:image" content="images/Logo.png">
-
-    <title>imp0str.dev | High-Performance Business Websites & Web Engineering</title>
-
-    <!-- Google Fonts - Oxanium & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oxanium:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Animate.css CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050407">
+<meta name="description" content="imp0str — independent developer and creator. Explore games, Godot tools, web development, and experiments.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.imp0str.dev/">
+<meta property="og:title" content="imp0str — One creator. Two worlds.">
+<meta property="og:description" content="Games to get lost in. Websites that get things done. The home of imp0str, independent developer and creator.">
+<meta property="og:image" content="https://www.imp0str.dev/images/NewLogo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="imp0str — One creator. Two worlds.">
+<meta name="twitter:description" content="Games, Godot, websites, and experiments. Built by imp0str.">
+<meta name="twitter:image" content="https://www.imp0str.dev/images/NewLogo.png">
+<title>imp0str — Developer & Creator</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/app-icon.png">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/portfolio.js" defer>
+</script>
 </head>
 <body>
-    <!-- Canvas Particle Background -->
-    <canvas class="canvas-background" aria-hidden="true"></canvas>
-
-    <!-- Navigation Header -->
-    <header class="header">
-        <div class="nav-container">
-            <a href="#hero" class="brand-link">
-                <img src="images/Logo.png" alt="imp0str logo" class="brand-logo">
-                <span class="brand-name">imp0str<span class="brand-dot">.dev</span></span>
-            </a>
-
-            <nav class="desktop-nav" aria-label="Main Navigation">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#capabilities" class="nav-link">Capabilities</a>
-                <a href="#projects" class="nav-link">Work</a>
-                <a href="#process" class="nav-link">Process</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#estimator" class="nav-link">Estimator</a>
-                <a href="#contact" class="btn btn-primary nav-cta">Start a Project</a>
-            </nav>
-
-            <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
-
-        <!-- Mobile Drawer Menu -->
-        <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-            <nav class="mobile-nav" aria-label="Mobile Navigation">
-                <a href="#services" class="mobile-link">Services</a>
-                <a href="#capabilities" class="mobile-link">Capabilities</a>
-                <a href="#projects" class="mobile-link">Work & Projects</a>
-                <a href="#process" class="mobile-link">Process</a>
-                <a href="#about" class="mobile-link">About imp0str</a>
-                <a href="#estimator" class="mobile-link">Project Estimator</a>
-                <a href="#contact" class="mobile-link btn btn-primary mobile-cta">Start a Project</a>
-                
-                <div class="mobile-socials">
-                    <a href="https://github.com/imp0str" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                    <a href="https://youtube.com/@imp0strdev" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                    </a>
-                    <a href="https://imp0str.itch.io" target="_blank" rel="noopener noreferrer" aria-label="Itch.io">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.137 2.41 2.466 2.41h.024c1.33 0 2.466-1.102 2.466-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612-3.253-.114-5.508-.134-8.87-.134-3.362 0-5.617.02-8.87.134zm6.67 6.474c0 .32.015.646.047.968.03.332.098.61.202.865.124.264.295.48.512.64.215.163.492.238.83.238.34 0 .615-.075.83-.238.22-.16.39-.376.512-.64.104-.254.172-.533.202-.865.032-.322.048-.648.048-.968 0-.33-.018-.658-.053-.992-.036-.332-.12-.627-.25-.88-.13-.26-.314-.47-.543-.63-.23-.162-.517-.244-.866-.244-.348 0-.635.082-.866.244-.228.16-.412.37-.543.63-.13.253-.214.548-.25.88-.035.334-.053.662-.053.992zm.04 6.554c0 .248.034.504.106.76.07.26.184.497.34.713.157.217.368.395.632.533.264.14.596.21 1.003.21.406 0 .738-.07 1.002-.21.264-.138.475-.316.632-.533.156-.216.27-.453.34-.713.072-.256.107-.512.107-.76 0-.276-.035-.537-.107-.785-.07-.247-.184-.466-.34-.654-.157-.188-.368-.335-.632-.447-.264-.11-.596-.166-1.002-.166-.407 0-.74.055-1.003.166-.264.112-.475.26-.632.447-.156.188-.27.407-.34.654-.072.248-.106.51-.106.785z"/></svg>
-                    </a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="container hero-container">
-                <div class="hero-badge">
-                    <span class="status-dot"></span>
-                    <span>Independent Web Developer & Software Engineer</span>
-                </div>
-
-                <h1 class="hero-title">
-                    High&#8209;Performance Websites & Digital Experiences Built for <span class="gradient-text">Growth</span>
-                </h1>
-
-                <p class="hero-subtitle">
-                    I build fast, responsive, custom-engineered websites and web applications that help businesses convert visitors into clients — combining clean code with strong technical execution.
-                </p>
-
-                <div class="hero-typing">
-                    <span class="typing-label">Specializing in:</span>
-                    <span id="typed-text" class="typed-text"></span>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary btn-lg">Start a Project</a>
-                    <a href="#projects" class="btn btn-secondary btn-lg">Explore Work & Capabilities</a>
-                </div>
-
-                <div class="hero-highlights">
-                    <div class="highlight-item">
-                        <span class="highlight-icon">⚡</span>
-                        <div>
-                            <strong>Lightning Speed</strong>
-                            <span>Sub-second loading times & clean code</span>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <span class="highlight-icon">📱</span>
-                        <div>
-                            <strong>Mobile-First UX</strong>
-                            <span>Flawless across phone, tablet & desktop</span>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <span class="highlight-icon">🛠️</span>
-                        <div>
-                            <strong>Custom Built</strong>
-                            <span>No bloated templates or security vulnerabilities</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="section services-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Services</span>
-                    <h2 class="section-title">What I Can Build For Your Business</h2>
-                    <p class="section-description">
-                        Whether you need a brand-new website, a modern refresh, or custom web functionality, I deliver tailored digital solutions designed to produce real results.
-                    </p>
-                </div>
-
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🌐</div>
-                        <h3 class="service-title">Business Website Development</h3>
-                        <p class="service-text">
-                            Custom, hand-crafted websites designed specifically for your brand and target market. No generic page builders or slow plugins — just clean, maintainable, lightning-fast web engineering.
-                        </p>
-                        <ul class="service-features">
-                            <li>Modern UI/UX design</li>
-                            <li>SEO & local search structure</li>
-                            <li>Contact & lead conversion forms</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">🔄</div>
-                        <h3 class="service-title">Website Redesign & Modernization</h3>
-                        <p class="service-text">
-                            Is your current website slow, outdated, or hard to navigate on mobile devices? I overhaul existing sites into modern, high-converting digital storefronts.
-                        </p>
-                        <ul class="service-features">
-                            <li>Performance optimization</li>
-                            <li>Mobile navigation & responsive layout</li>
-                            <li>Updated visual brand identity</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">💻</div>
-                        <h3 class="service-title">Custom Web Applications & Tools</h3>
-                        <p class="service-text">
-                            Need more than a static brochure site? I engineer custom interactive web tools, client dashboards, automated estimators, and API integrations.
-                        </p>
-                        <ul class="service-features">
-                            <li>Custom calculators & estimators</li>
-                            <li>Database & API integration</li>
-                            <li>AI chatbot & workflow automation</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">🚀</div>
-                        <h3 class="service-title">Optimization & Technical Support</h3>
-                        <p class="service-text">
-                            Ongoing website care, security audits, page-speed tuning, hosting configuration, and custom feature additions so your site always operates at peak efficiency.
-                        </p>
-                        <ul class="service-features">
-                            <li>Google Lighthouse speed tuning</li>
-                            <li>Domain, DNS & hosting setup</li>
-                            <li>Ongoing maintenance & updates</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Capabilities & Value Proposition Section -->
-        <section id="capabilities" class="section capabilities-section">
-            <div class="container">
-                <div class="capabilities-box">
-                    <div class="capabilities-content">
-                        <span class="section-tag">Why Hire imp0str</span>
-                        <h2 class="section-title">The Engineering Advantage</h2>
-                        <p class="capabilities-text">
-                            Most generic business websites suffer from bloated page-builders, slow load times, and poor mobile experiences that push potential customers away. As a software developer with game-dev attention to detail, I build websites with precision engineering.
-                        </p>
-
-                        <div class="capabilities-list">
-                            <div class="capability-item">
-                                <div class="capability-number">01</div>
-                                <div>
-                                    <h4 class="capability-heading">Zero Bloat, Maximum Performance</h4>
-                                    <p>Clean semantic HTML, modern modular CSS, and fast JavaScript. Your pages load instantly on slow mobile connections, boosting SEO rankings.</p>
-                                </div>
-                            </div>
-
-                            <div class="capability-item">
-                                <div class="capability-number">02</div>
-                                <div>
-                                    <h4 class="capability-heading">Direct Developer Access</h4>
-                                    <p>You work directly with the person writing your code. No account managers, no outsourcing game, no miscommunications.</p>
-                                </div>
-                            </div>
-
-                            <div class="capability-item">
-                                <div class="capability-number">03</div>
-                                <div>
-                                    <h4 class="capability-heading">Scalable Tech Stack Foundation</h4>
-                                    <p>Built using standard, maintainable web tech that can easily expand with custom features, APIs, and business growth down the line.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="capabilities-card">
-                        <div class="score-card">
-                            <div class="score-header">
-                                <span class="score-label">Target Performance Benchmarks</span>
-                                <span class="score-badge">100% Target</span>
-                            </div>
-                            <div class="score-metrics">
-                                <div class="metric">
-                                    <span class="metric-title">Performance</span>
-                                    <div class="progress-bar"><div class="progress-fill" style="width: 98%;"></div></div>
-                                    <span class="metric-val">98-100</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-title">Accessibility</span>
-                                    <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
-                                    <span class="metric-val">100</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-title">Best Practices</span>
-                                    <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
-                                    <span class="metric-val">100</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-title">SEO Optimization</span>
-                                    <div class="progress-bar"><div class="progress-fill" style="width: 98%;"></div></div>
-                                    <span class="metric-val">98-100</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Selected Work & Projects Section -->
-        <section id="projects" class="section projects-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Portfolio & Projects</span>
-                    <h2 class="section-title">Selected Technical Work</h2>
-                    <p class="section-description">
-                        A collection of custom web applications, interactive software tools, and game engineering projects demonstrating technical problem-solving capabilities.
-                    </p>
-                </div>
-
-                <!-- Filter Tabs -->
-                <div class="project-filters" role="tablist" aria-label="Project Categories">
-                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Work</button>
-                    <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web & Client Tools</button>
-                    <button class="filter-btn" data-filter="games" role="tab" aria-selected="false">Game & Interactive</button>
-                    <button class="filter-btn" data-filter="software" role="tab" aria-selected="false">Software Applications</button>
-                </div>
-
-                <!-- Projects Showcase Grid -->
-                <div class="projects-grid">
-                    <!-- Project Item 1: PersonaPal -->
-                    <article class="project-card" data-category="web software">
-                        <div class="project-image-container">
-                            <img src="images/PersonaPal/1.jpg" alt="PersonaPal AI Chatbot Interface" class="project-thumb">
-                            <span class="project-tag">Web Application</span>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">PersonaPal AI Character Chatbot</h3>
-                            <p class="project-desc">
-                                An interactive AI-powered character chatbot application. Features customized character prompt personas, context memory, and responsive conversational UI.
-                            </p>
-                            <div class="project-tech-stack">
-                                <span>Python</span>
-                                <span>AI API Integrations</span>
-                                <span>HTML/CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links-row">
-                                <a href="https://github.com/imp0str/PersonaPal" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">GitHub Repository</a>
-                                <button class="btn btn-secondary btn-sm open-project-modal" data-project-id="1">View Gallery</button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project Item 2: Pokemon Guessing Game -->
-                    <article class="project-card" data-category="games">
-                        <div class="project-image-container">
-                            <img src="images/PokemonGuessingGame/1.png" alt="Pokemon Guessing Game gameplay" class="project-thumb">
-                            <span class="project-tag">Godot Game</span>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Pokemon Guessing Game</h3>
-                            <p class="project-desc">
-                                An engaging interactive game built with Godot engine. Demonstrates UI state management, online leaderboards, custom sprite rendering, and Pokedex database queries.
-                            </p>
-                            <div class="project-tech-stack">
-                                <span>Godot Engine</span>
-                                <span>GDScript</span>
-                                <span>Online Leaderboard API</span>
-                                <span>UI State Logic</span>
-                            </div>
-                            <div class="project-links-row">
-                                <a href="https://imp0str.itch.io/pokemon-guessing-game" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Play on Itch.io</a>
-                                <a href="https://github.com/imp0str/PokemonGuessingGame" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project Item 3: Planet Defense -->
-                    <article class="project-card" data-category="games">
-                        <div class="project-image-container">
-                            <img src="images/PlanetDefense/1.png" alt="Planet Defense gameplay screen" class="project-thumb">
-                            <span class="project-tag">Godot Action Game</span>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Planet Defense</h3>
-                            <p class="project-desc">
-                                Fast-paced space defense game featuring smooth player controls, progressive difficulty loops, collision math, particle systems, and audio feedback design.
-                            </p>
-                            <div class="project-tech-stack">
-                                <span>Godot Engine</span>
-                                <span>2D Physics Math</span>
-                                <span>Particle Systems</span>
-                                <span>UX Interaction</span>
-                            </div>
-                            <div class="project-links-row">
-                                <a href="https://imp0str.itch.io/planet-defense" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Play on Itch.io</a>
-                                <a href="https://github.com/imp0str/PlanetDefense" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">GitHub</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project Item 4: LunaIPTV -->
-                    <article class="project-card" data-category="software">
-                        <div class="project-image-container">
-                            <img src="images/LunaIPTV/1.png" alt="LunaIPTV interface" class="project-thumb">
-                            <span class="project-tag">Python Application</span>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">LunaIPTV Stream Player</h3>
-                            <p class="project-desc">
-                                Feature-rich desktop stream client for Xtream IPTV services built with Python. Includes multi-playlist parsing, live EPG guide scheduling, and custom UI skinning.
-                            </p>
-                            <div class="project-tech-stack">
-                                <span>Python</span>
-                                <span>PyQt / GUI Frameworks</span>
-                                <span>Network Streaming APIs</span>
-                                <span>JSON / XML Parsing</span>
-                            </div>
-                            <div class="project-links-row">
-                                <a href="https://github.com/imp0str/LunaIPTV" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">GitHub Repository</a>
-                                <button class="btn btn-secondary btn-sm open-project-modal" data-project-id="4">View Gallery</button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Commercial Capabilities Concept Card -->
-                    <article class="project-card business-concept-card" data-category="web">
-                        <div class="project-image-container concept-container">
-                            <div class="concept-badge">Client Concept</div>
-                            <div class="concept-visual">
-                                <div class="concept-mockup-header">
-                                    <span class="mock-dot red"></span>
-                                    <span class="mock-dot yellow"></span>
-                                    <span class="mock-dot green"></span>
-                                </div>
-                                <div class="concept-mockup-body">
-                                    <div class="mock-nav"></div>
-                                    <div class="mock-hero-line"></div>
-                                    <div class="mock-hero-line short"></div>
-                                    <div class="mock-grid">
-                                        <div class="mock-box"></div>
-                                        <div class="mock-box"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Modern Business Website Blueprint</h3>
-                            <p class="project-desc">
-                                Example architecture for local service providers, contractors, or restaurants: instant booking forms, mobile-optimized menu/service lists, and direct lead generation.
-                            </p>
-                            <div class="project-tech-stack">
-                                <span>Semantic HTML5</span>
-                                <span>CSS Grid/Flexbox</span>
-                                <span>Vanilla JS</span>
-                                <span>Form Spree / Mail API</span>
-                            </div>
-                            <div class="project-links-row">
-                                <a href="#contact" class="btn btn-primary btn-sm">Build Yours Today</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Project Modal Gallery Viewer -->
-        <div id="projectModal" class="project-modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-            <div class="modal-backdrop"></div>
-            <div class="modal-content">
-                <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-                <div class="modal-body">
-                    <div class="modal-gallery">
-                        <img id="modalImage" alt="Project detail screenshot" class="modal-main-img">
-                        <div class="modal-gallery-controls">
-                            <button id="modalPrev" class="modal-arrow" aria-label="Previous image">‹</button>
-                            <span id="modalCounter" class="modal-counter">1 / 4</span>
-                            <button id="modalNext" class="modal-arrow" aria-label="Next image">›</button>
-                        </div>
-                    </div>
-                    <div class="modal-details">
-                        <h3 id="modalTitle" class="modal-title">Project Title</h3>
-                        <p id="modalDesc" class="modal-desc">Project description...</p>
-                        <div id="modalLinks" class="modal-links"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Development Process Section -->
-        <section id="process" class="section process-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">How It Works</span>
-                    <h2 class="section-title">A Simple, Transparent Process</h2>
-                    <p class="section-description">
-                        Building or redesigning a website shouldn't feel chaotic or overcomplicated. Here is how we take your project from initial concept to launch.
-                    </p>
-                </div>
-
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-badge">1</div>
-                        <h3 class="step-title">Discovery & Scope</h3>
-                        <p class="step-desc">
-                            We clarify your business goals, target audience, required features, and key content to define a clear scope and roadmap.
-                        </p>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-badge">2</div>
-                        <h3 class="step-title">Design & Structure</h3>
-                        <p class="step-desc">
-                            I map out responsive layouts, typography, visual hierarchy, and mobile interaction flows so you can visualize the exact outcome.
-                        </p>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-badge">3</div>
-                        <h3 class="step-title">Clean Custom Coding</h3>
-                        <p class="step-desc">
-                            I craft your website line-by-line using high-performance code standards. Every element is tested for speed, accessibility, and cross-browser stability.
-                        </p>
-                    </div>
-
-                    <div class="process-step">
-                        <div class="step-badge">4</div>
-                        <h3 class="step-title">Testing & Launch</h3>
-                        <p class="step-desc">
-                            After domain configuration, SSL setup, and mobile responsiveness verification, your new website goes live ready to accept new clients.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About imp0str Section -->
-        <section id="about" class="section about-section">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-image-col">
-                        <div class="about-logo-wrapper">
-                            <img src="images/Logo.png" alt="imp0str logo mark" class="about-brand-img">
-                        </div>
-                    </div>
-
-                    <div class="about-text-col">
-                        <span class="section-tag">About imp0str</span>
-                        <h2 class="section-title">Developer & Technical Craftsman</h2>
-                        <p class="about-lead">
-                            Hey there! I'm <strong class="highlight-text">imp0str</strong> — an independent web developer, software engineer, and creator.
-                        </p>
-                        <p>
-                            My approach to web development comes from a background in software engineering and game development. In game dev, every millisecond and frame counts — I bring that same discipline of performance, precision, and clean code to building websites for business clients.
-                        </p>
-                        <p>
-                            When I'm not writing code or building digital experiences, I spend quality time with my family, experiment with new technologies, and craft game prototypes.
-                        </p>
-
-                        <div class="tech-stack-container">
-                            <span class="stack-label">Technical Tooling & Capabilities:</span>
-                            <div class="stack-tags">
-                                <span>HTML5 / Semantic Web</span>
-                                <span>CSS3 / Flexbox & Grid</span>
-                                <span>JavaScript (ES6+)</span>
-                                <span>Python</span>
-                                <span>Godot Engine</span>
-                                <span>REST & Web APIs</span>
-                                <span>Responsive UI/UX</span>
-                                <span>Git & Version Control</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Project Scope & Estimator Section -->
-        <section id="estimator" class="section estimator-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Interactive Planner</span>
-                    <h2 class="section-title">Estimate Your Project Scope</h2>
-                    <p class="section-description">
-                        Select your project requirements below to calculate a recommended scope estimate and timeline.
-                    </p>
-                </div>
-
-                <div class="estimator-wrapper">
-                    <div class="estimator-controls">
-                        <!-- Option 1: Project Type -->
-                        <div class="estimator-group">
-                            <label class="estimator-label">1. What type of project do you need?</label>
-                            <div class="estimator-options" data-type="project-type">
-                                <button type="button" class="est-option active" data-value="new-site" data-time="1-2 weeks">
-                                    <strong>New Business Website</strong>
-                                    <span>Brand new custom static/dynamic site</span>
-                                </button>
-                                <button type="button" class="est-option" data-value="redesign" data-time="1 week">
-                                    <strong>Website Redesign</strong>
-                                    <span>Overhaul existing outdated site</span>
-                                </button>
-                                <button type="button" class="est-option" data-value="web-app" data-time="2-4 weeks">
-                                    <strong>Custom Web Application</strong>
-                                    <span>Interactive tool, calculator, or portal</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Option 2: Page Count -->
-                        <div class="estimator-group">
-                            <label class="estimator-label">2. Estimated Page Count</label>
-                            <div class="estimator-options" data-type="page-count">
-                                <button type="button" class="est-option active" data-value="1-3 pages">
-                                    <strong>1 - 3 Pages</strong>
-                                    <span>Landing Page / Focused Brochure</span>
-                                </button>
-                                <button type="button" class="est-option" data-value="4-7 pages">
-                                    <strong>4 - 7 Pages</strong>
-                                    <span>Standard Business Site</span>
-                                </button>
-                                <button type="button" class="est-option" data-value="8+ pages">
-                                    <strong>8+ Pages</strong>
-                                    <span>Comprehensive Multi-Section Site</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Option 3: Additional Features -->
-                        <div class="estimator-group">
-                            <label class="estimator-label">3. Add-On Features (Select all that apply)</label>
-                            <div class="estimator-checkboxes">
-                                <label class="est-checkbox">
-                                    <input type="checkbox" value="Contact / Lead Capture Forms" checked>
-                                    <span>Contact & Lead Capture Form</span>
-                                </label>
-                                <label class="est-checkbox">
-                                    <input type="checkbox" value="Mobile UX Optimization" checked>
-                                    <span>Mobile-First Responsive Optimization</span>
-                                </label>
-                                <label class="est-checkbox">
-                                    <input type="checkbox" value="SEO & Metadata Structure">
-                                    <span>SEO Search Optimization Structure</span>
-                                </label>
-                                <label class="est-checkbox">
-                                    <input type="checkbox" value="Custom Estimator / Interactive Widget">
-                                    <span>Custom Interactive Widget / Tool</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Estimate Summary Card -->
-                    <div class="estimator-summary">
-                        <h3 class="summary-title">Project Summary Estimate</h3>
-                        <div class="summary-details">
-                            <div class="summary-row">
-                                <span>Selected Type:</span>
-                                <strong id="summaryType">New Business Website</strong>
-                            </div>
-                            <div class="summary-row">
-                                <span>Page Scope:</span>
-                                <strong id="summaryPages">1 - 3 Pages</strong>
-                            </div>
-                            <div class="summary-row">
-                                <span>Est. Timeline:</span>
-                                <strong id="summaryTime" class="highlight-cyan">1 - 2 Weeks</strong>
-                            </div>
-                            <div class="summary-features">
-                                <span>Included Features:</span>
-                                <ul id="summaryFeaturesList">
-                                    <li>Contact & Lead Capture Form</li>
-                                    <li>Mobile-First Responsive Optimization</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <button id="applyEstimateBtn" class="btn btn-primary btn-block">Apply Scope to Contact Form ↓</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <span class="section-tag">Get In Touch</span>
-                        <h2 class="section-title">Let's Build Something Great Together</h2>
-                        <p class="contact-lead">
-                            Ready to upgrade your website or build a custom web application? Fill out the form or reach out directly to start a conversation.
-                        </p>
-
-                        <div class="contact-direct">
-                            <div class="contact-item">
-                                <span class="contact-icon">✉️</span>
-                                <div>
-                                    <strong>Email</strong>
-                                    <a href="mailto:imp0str.dev@gmail.com" class="contact-email">imp0str.dev@gmail.com</a>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <span class="contact-icon">⚡</span>
-                                <div>
-                                    <strong>Response Time</strong>
-                                    <span>Usually within 24 business hours</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="contact-social-box">
-                            <strong>Connect & Code:</strong>
-                            <div class="social-links-row">
-                                <a href="https://github.com/imp0str" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                                    <span>GitHub</span>
-                                </a>
-                                <a href="https://youtube.com/@imp0strdev" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                                    <span>YouTube</span>
-                                </a>
-                                <a href="https://imp0str.itch.io" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Itch.io">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.137 2.41 2.466 2.41h.024c1.33 0 2.466-1.102 2.466-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612-3.253-.114-5.508-.134-8.87-.134-3.362 0-5.617.02-8.87.134zm6.67 6.474c0 .32.015.646.047.968.03.332.098.61.202.865.124.264.295.48.512.64.215.163.492.238.83.238.34 0 .615-.075.83-.238.22-.16.39-.376.512-.64.104-.254.172-.533.202-.865.032-.322.048-.648.048-.968 0-.33-.018-.658-.053-.992-.036-.332-.12-.627-.25-.88-.13-.26-.314-.47-.543-.63-.23-.162-.517-.244-.866-.244-.348 0-.635.082-.866.244-.228.16-.412.37-.543.63-.13.253-.214.548-.25.88-.035.334-.053.662-.053.992zm.04 6.554c0 .248.034.504.106.76.07.26.184.497.34.713.157.217.368.395.632.533.264.14.596.21 1.003.21.406 0 .738-.07 1.002-.21.264-.138.475-.316.632-.533.156-.216.27-.453.34-.713.072-.256.107-.512.107-.76 0-.276-.035-.537-.107-.785-.07-.247-.184-.466-.34-.654-.157-.188-.368-.335-.632-.447-.264-.11-.596-.166-1.002-.166-.407 0-.74.055-1.003.166-.264.112-.475.26-.632.447-.156.188-.27.407-.34.654-.072.248-.106.51-.106.785z"/></svg>
-                                    <span>Itch.io</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Contact Form -->
-                    <div class="contact-form-container">
-                        <form id="contactForm" class="contact-form" action="#" method="POST">
-                            <h3 class="form-title">Start Your Project</h3>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="name">Your Name *</label>
-                                    <input type="text" id="name" name="name" required placeholder="e.g. Sarah Jenkins">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email Address *</label>
-                                    <input type="email" id="email" name="email" required placeholder="sarah@yourbusiness.com">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="business">Business / Organization Name</label>
-                                <input type="text" id="business" name="business" placeholder="Optional (e.g. Local Coffee Co.)">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="service">Service Needed</label>
-                                <select id="service" name="service">
-                                    <option value="New Business Website">New Business Website</option>
-                                    <option value="Website Redesign">Website Redesign / Overhaul</option>
-                                    <option value="Custom Web Application">Custom Web Application / Tool</option>
-                                    <option value="Maintenance & Performance Optimization">Maintenance & Performance Optimization</option>
-                                    <option value="Other Enquiries">Other Software Engineering Enquiries</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Project Details & Requirements *</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="Tell me about your business goals, current website (if any), target timeline, and specific features you need..."></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary btn-block btn-lg">Send Project Enquiry</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <span class="brand-name">imp0str<span class="brand-dot">.dev</span></span>
-                <p class="footer-tagline">High-Performance Custom Web Engineering for Businesses & Brands.</p>
-            </div>
-
-            <div class="footer-links">
-                <a href="#services">Services</a>
-                <a href="#capabilities">Capabilities</a>
-                <a href="#projects">Work</a>
-                <a href="#process">Process</a>
-                <a href="#about">About</a>
-                <a href="#estimator">Estimator</a>
-                <a href="#contact">Contact</a>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> imp0str.dev. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Typed.js CDN -->
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <!-- Custom JavaScript -->
-    <script src="js/portfolio.js"></script>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="header wrap">
+<a class="wordmark" href="#hero" aria-label="imp0str home">imp<span>0</span>str<span class="domain">.dev</span>
+</a>
+<nav aria-label="Main navigation">
+<a href="#projects">Selected work</a>
+<a href="#about">About</a>
+<a class="contact-link" href="#contact">Say hello <span aria-hidden="true">↗</span>
+</a>
+</nav>
+</header>
+<main id="main-content">
+<section class="hub wrap" id="hero" aria-labelledby="identity-title">
+<div class="intro">
+<p class="eyebrow">
+<span class="signal" aria-hidden="true">
+</span> Independent developer & creator</p>
+<h1 id="identity-title">One creator.<br class="mobile-break"> <span>Two worlds.</span>
+</h1>
+<p>Games to get lost in. Websites that get things done.</p>
+</div>
+<div class="gateway">
+<div class="emblem">
+<div class="orbit" aria-hidden="true">
+</div>
+<img src="images/mascot-640.png" srcset="images/mascot-640.png 640w, images/NewLogo.png 1254w" sizes="(max-width: 760px) 220px, 40vw" width="1254" height="1254" fetchpriority="high" alt="imp0str: a purple hooded mascot with luminous pixel eyes and an Ø emblem">
+<span class="emblem-caption" aria-hidden="true">THIS IS IMP0STR</span>
+</div>
+<a class="path path-game" href="#game" data-destination="game">
+<span class="path-index">01 / PLAY & EXPERIMENT</span>
+<h2>Game<span class="path-arrow" aria-hidden="true">↗</span>
+</h2>
+<p>Worlds, systems, and things <br>worth pressing play on.</p>
+<span class="path-tags">Godot · Games · Developer tools</span>
+<span class="path-cta">Explore the game side <span aria-hidden="true">→</span>
+</span>
+</a>
+<a class="path path-web" href="#web" data-destination="web">
+<span class="path-index">02 / DESIGN & DEVELOP</span>
+<h2>Web<span class="path-arrow" aria-hidden="true">↗</span>
+</h2>
+<p>Thoughtful interfaces. <br>Built to work beautifully.</p>
+<span class="path-tags">Websites · Frontend · Client work</span>
+<span class="path-cta">Explore the web side <span aria-hidden="true">→</span>
+</span>
+</a>
+</div>
+<div class="hub-bottom">
+<span class="mono">ONE IDENTITY. DIFFERENT POSSIBILITIES.</span>
+<a href="#projects">A little of what I build <span aria-hidden="true">↓</span>
+</a>
+</div>
+</section>
+<section class="work wrap" id="projects" aria-labelledby="work-title">
+<div class="section-heading">
+<div>
+<p class="eyebrow">A few things out in the world</p>
+<h2 id="work-title">Built from curiosity.</h2>
+</div>
+<a class="text-link" href="https://github.com/imp0str">More on GitHub <span aria-hidden="true">↗</span>
+</a>
+</div>
+<div class="branch-section" id="game" tabindex="-1">
+<div class="branch-heading">
+<span class="branch-code">01 / GAME</span>
+<p>Playable ideas. Hands-on experiments.<br>Exploring what’s possible with Godot.</p>
+<a class="text-link" href="https://imp0str.itch.io/">Visit itch.io <span aria-hidden="true">↗</span>
+</a>
+</div>
+<div class="game-projects">
+<article class="project">
+<a class="project-image" href="https://imp0str.itch.io/planet-defense" aria-label="Play Planet Defense on itch.io">
+<img src="images/PlanetDefense/1.png" alt="Planet Defense game with a planet surrounded by space" width="960" height="540" loading="lazy">
+<span class="image-action" aria-hidden="true">PLAY ↗</span>
+</a>
+<div class="project-meta">
+<span>GODOT / 2D ACTION</span>
+<a href="https://github.com/imp0str/PlanetDefense">Source ↗</a>
+</div>
+<h3>
+<a href="https://imp0str.itch.io/planet-defense">Planet Defense</a>
+</h3>
+<p>A small planet. A growing threat. A space-defense game built around responsive controls and escalating difficulty.</p>
+</article>
+<article class="project">
+<a class="project-image" href="https://imp0str.itch.io/pokemon-guessing-game" aria-label="Play Pokémon Guessing Game on itch.io">
+<img src="images/PokemonGuessingGame/1.png" alt="Pokémon Guessing Game interface" width="960" height="540" loading="lazy">
+<span class="image-action" aria-hidden="true">PLAY ↗</span>
+</a>
+<div class="project-meta">
+<span>GODOT / GUESSING GAME</span>
+<a href="https://github.com/imp0str/PokemonGuessingGame">Source ↗</a>
+</div>
+<h3>
+<a href="https://imp0str.itch.io/pokemon-guessing-game">Pokémon Guessing Game</a>
+</h3>
+<p>Put your Pokédex knowledge to the test. An experiment in game UI, state management, and online leaderboards.</p>
+</article>
+</div>
+</div>
+<div class="branch-section web-section" id="web" tabindex="-1">
+<div class="branch-heading">
+<span class="branch-code">02 / WEB</span>
+<p>Clear design. Considered interactions.<br>Custom websites and useful web applications.</p>
+<a class="text-link" href="mailto:imp0str.dev@gmail.com?subject=Let%E2%80%99s%20build%20a%20website">Discuss a project <span aria-hidden="true">↗</span>
+</a>
+</div>
+<article class="web-project">
+<a class="project-image" href="https://github.com/imp0str/PersonaPal" aria-label="Explore PersonaPal on GitHub">
+<img src="images/PersonaPal/1.jpg" alt="PersonaPal character chat application interface" width="960" height="540" loading="lazy">
+<span class="image-action" aria-hidden="true">EXPLORE ↗</span>
+</a>
+<div class="web-project-copy">
+<span class="project-meta">PYTHON / AI INTEGRATION / WEB UI</span>
+<h3>PersonaPal</h3>
+<p>A character-driven chat application exploring conversational interfaces, custom personas, and context memory.</p>
+<a class="text-link" href="https://github.com/imp0str/PersonaPal">Explore the project <span aria-hidden="true">↗</span>
+</a>
+<div class="services-note">
+<span class="mono">HAVE SOMETHING IN MIND?</span>
+<p>I also design and build business websites, frontend interfaces, and custom web tools.</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section class="about wrap" id="about" aria-labelledby="about-title">
+<div>
+<p class="eyebrow">Behind the hood</p>
+<h2 id="about-title">Same curiosity.<br>Different canvases.</h2>
+</div>
+<div class="about-copy">
+<p>I’m imp0str, an independent developer and creator. I build games, websites, and software—and enjoy figuring out how to make them feel right.</p>
+<p>Game development shapes how I think about the web: responsive feedback, thoughtful systems, and attention to the details people actually notice. Between builds, I spend time with my family and explore new ideas.</p>
+<div class="tooling" aria-label="Tools and skills">
+<span>Godot</span>
+<span>GDScript</span>
+<span>JavaScript</span>
+<span>HTML & CSS</span>
+<span>Python</span>
+</div>
+</div>
+</section>
+<section class="contact wrap" id="contact" aria-labelledby="contact-title">
+<div>
+<p class="eyebrow">Ideas, collaborations, or a simple hello</p>
+<h2 id="contact-title">Let’s make something<br>worth opening.</h2>
+</div>
+<a class="email" href="mailto:imp0str.dev@gmail.com">imp0str.dev@gmail.com <span aria-hidden="true">↗</span>
+</a>
+</section>
+</main>
+<footer class="wrap">
+<a class="wordmark" href="#hero">imp<span>0</span>str<span class="domain">.dev</span>
+</a>
+<p>Independent by design. Curious by default.</p>
+<nav aria-label="Social links">
+<a href="https://github.com/imp0str">GitHub ↗</a>
+<a href="https://imp0str.itch.io/">itch.io ↗</a>
+<a href="https://youtube.com/@imp0strdev">YouTube ↗</a>
+</nav>
+<small>© <span id="currentYear">2026</span> imp0str</small>
+</footer>
 </body>
 </html>
