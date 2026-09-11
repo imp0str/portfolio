@@ -1,7 +1,7 @@
 // Activate child domains here only after each destination is live and verified.
-// Until then, the HTML fragment fallbacks keep both gateway actions safe.
+// The Web fragment fallback stays safe until its site and domain are approved.
 const destinations = Object.freeze({
-  game: '#game',
+  game: 'https://game.imp0str.dev',
   web: '#web'
 });
 
