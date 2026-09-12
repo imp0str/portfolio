@@ -1,8 +1,7 @@
-// Activate child domains here only after each destination is live and verified.
-// The Web fragment fallback stays safe until its site and domain are approved.
+// Keep live ecosystem destinations centralized here.
 const destinations = Object.freeze({
   game: 'https://game.imp0str.dev',
-  web: '#web'
+  web: 'https://web.imp0str.dev'
 });
 
 document.querySelectorAll('[data-destination]').forEach((link) => {

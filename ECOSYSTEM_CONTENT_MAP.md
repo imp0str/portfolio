@@ -11,7 +11,7 @@ This file records where the material from the former scrolling portfolio belongs
 
 The hub intentionally contains no project gallery, services list, long biography, or tooling inventory.
 
-## Game — game.imp0str.dev (future domain)
+## Game — game.imp0str.dev
 
 - Modular 3D Character System
 - Final Weekend
@@ -20,9 +20,9 @@ The hub intentionally contains no project gallery, services list, long biography
 - Pokémon Hangman and future experiments/prototypes
 - Godot tooling, source links, playable builds, itch.io, and development updates
 
-The implementation lives in the separate `imp0str-game` repository. The production subdomain remains unconfigured until approval.
+The implementation lives in the separate `imp0str-game` repository and is live at its production subdomain.
 
-## Web — web.imp0str.dev (future phase)
+## Web — web.imp0str.dev
 
 - PersonaPal and its screenshots in `images/PersonaPal/`
 - Web-development services and conversion/contact copy
